@@ -16,6 +16,10 @@ namespace Fleet_Caddy
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnFleetList { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton btnLogOff { get; set; }
 
 		[Outlet]
@@ -24,6 +28,10 @@ namespace Fleet_Caddy
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnFleetList != null) {
+				btnFleetList.Dispose ();
+				btnFleetList = null;
+			}
 			if (btnLogOff != null) {
 				btnLogOff.Dispose ();
 				btnLogOff = null;

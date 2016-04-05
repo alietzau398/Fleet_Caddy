@@ -29,6 +29,18 @@
                                 <state key="normal" title="Log Off">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue id="700" destination="8" kind="modal" identifier="LogOffSeque"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="724" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="20" y="808" width="188" height="30"/>
+                                <state key="normal" title="Manage Fleet">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue id="766" destination="716" kind="push"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
@@ -36,11 +48,12 @@
                     <connections>
                         <outlet property="btnLogOff" destination="123" id="name-outlet-123"/>
                         <outlet property="lblWelcome" destination="117" id="name-outlet-117"/>
+                        <outlet property="btnFleetList" destination="724" id="name-outlet-724"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1174" y="510"/>
+            <point key="canvasLocation" x="1149" y="496"/>
         </scene>
         <scene sceneID="7">
             <objects>
@@ -100,7 +113,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue id="410" destination="BYZ-38-t0r" kind="push"/>
+                                    <segue id="496" destination="BYZ-38-t0r" kind="push" identifier="LogInSeque"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="44" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -202,6 +215,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1156" y="1623"/>
+        </scene>
+        <scene sceneID="715">
+            <objects>
+                <tableViewController id="716" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="717">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="720" rowHeight="44">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="720" id="721">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="716" id="718"/>
+                            <outlet property="delegate" destination="716" id="719"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem title="Fleet Management" id="768" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="722" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2162" y="500"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
