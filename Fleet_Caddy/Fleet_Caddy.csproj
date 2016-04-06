@@ -84,6 +84,14 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CartDetailController.cs" />
+    <Compile Include="CartDetailController.designer.cs">
+      <DependentUpon>CartDetailController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CartListController.cs" />
+    <Compile Include="CartListController.designer.cs">
+      <DependentUpon>CartListController.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeController.cs" />
     <Compile Include="HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>

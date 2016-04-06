@@ -39,12 +39,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue id="766" destination="716" kind="push"/>
+                                    <segue id="766" destination="716" kind="push" identifier="CartListSeque"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
-                    <navigationItem title="Title" id="21" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem"/>
+                    <navigationItem title="Fleet Caddy" id="21" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem"/>
                     <connections>
                         <outlet property="btnLogOff" destination="123" id="name-outlet-123"/>
                         <outlet property="lblWelcome" destination="117" id="name-outlet-117"/>
@@ -113,7 +113,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue id="496" destination="BYZ-38-t0r" kind="push" identifier="LogInSeque"/>
+                                    <segue id="1128" destination="779" kind="modal" identifier="LogInSeque"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="44" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -218,7 +218,7 @@
         </scene>
         <scene sceneID="715">
             <objects>
-                <tableViewController id="716" sceneMemberID="viewController">
+                <tableViewController id="716" sceneMemberID="viewController" customClass="CartListController" storyboardIdentifier="CartListCon">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="717">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,11 +238,53 @@
                             <outlet property="delegate" destination="716" id="719"/>
                         </connections>
                     </tableView>
-                    <navigationItem title="Fleet Management" id="768" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem"/>
+                    <navigationItem title="Cart List" id="1150" translatesAutoresizingMaskIntoConstraints="NO" key="navigationItem"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="722" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2162" y="500"/>
+            <point key="canvasLocation" x="2183" y="494"/>
+        </scene>
+        <scene sceneID="778">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="779" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="782">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                    </navigationBar>
+                    <connections>
+                        <segue id="852" destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="783" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1151" y="-694"/>
+        </scene>
+        <scene sceneID="1151">
+            <objects>
+                <tableViewController id="1152" sceneMemberID="viewController" customClass="CartDetailController" storyboardIdentifier="CartDetailCon">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1153">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1156" rowHeight="44">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1156" id="1157">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1152" id="1154"/>
+                            <outlet property="delegate" destination="1152" id="1155"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1158" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3042" y="498"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

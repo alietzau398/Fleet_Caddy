@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using UIKit;
+using Parse;
 
 namespace Fleet_Caddy
 {
@@ -10,6 +11,12 @@ namespace Fleet_Caddy
     public class AppDelegate : UIApplicationDelegate
     {
         // class-level declarations
+        public AppDelegate()
+        {
+            // Initialize the Parse client with your Application ID and .NET Key found on your Parse dashboard
+            // get the App ID and .NET Key from Parse and substitute the text below accordingly
+            ParseClient.Initialize("LfT9w2TXGXRTeB6JEUng399AjlTAcWL2vSKwiemC", "B1Ns0U5lvLQgYRGZSfesrgGn04Gxt4bmWKp8Xcx9");
+        }
 
         public override UIWindow Window
         {
