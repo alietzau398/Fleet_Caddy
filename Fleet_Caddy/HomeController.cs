@@ -17,6 +17,16 @@ namespace Fleet_Caddy
             //Nothing to see here!
 		}
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            //sets the form equal to nothing
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+
+        }
+
         //In the near future when login works, this will point the user to the welcome page if they are already logged in 
         public override void ViewDidLoad()
         {
@@ -25,7 +35,9 @@ namespace Fleet_Caddy
             btnLogin.TouchUpInside += BtnLogin_TouchUpInside;
             if (ParseUser.CurrentUser != null)
             {
-                PerformSegue("LogInSeque", this);
+                //PerformSegue("LogInSeque", this);
+                var welcome = Storyboard.InstantiateViewController("Welcome") as WelcomeController;
+                NavigationController.PushViewController(welcome, true);
             }
         }
 
@@ -39,7 +51,7 @@ namespace Fleet_Caddy
             if ((string.IsNullOrEmpty(usernamePU)) || (string.IsNullOrEmpty(passwordPU)))
             {
                 //if the user didn't put anything in either field, let them know!
-                errorM = "Enter a valid username and password";
+                new UIAlertView("Login Failed", "Enter a valid username and password", null, "Ok").Show();
             }
             else
             {
@@ -48,7 +60,8 @@ namespace Fleet_Caddy
                 {
                     //try to connect to parse
                     ParseUser myUser = await ParseUser.LogInAsync(usernamePU, passwordPU);
-                    PerformSegue("LogInSeque", this);
+                    var welcome = Storyboard.InstantiateViewController("Welcome") as WelcomeController;
+                    NavigationController.PushViewController(welcome, true);
                 }
                 catch (ParseException f)
                 {

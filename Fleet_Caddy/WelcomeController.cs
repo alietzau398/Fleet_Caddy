@@ -23,6 +23,18 @@ namespace Fleet_Caddy
             lblWelcome.Text = "Welcome, " + currentUser["fName"];
         }
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            //remove the back button if the back button is not hidden
+            if (!(this.NavigationItem.HidesBackButton))
+            {
+                this.NavigationItem.SetHidesBackButton(true, false);
+            }
+
+        }
+
         private void BtnFleetList_TouchUpInside(object sender, EventArgs e)
         {
             //PerformSegue("CartListSeque", this);
@@ -31,7 +43,8 @@ namespace Fleet_Caddy
         private void BtnLogOff_TouchUpInside(object sender, EventArgs e)
         {
             ParseUser.LogOut();
-            PerformSegue("LogOffSeque", this);
+            //PerformSegue("LogOffSeque", this);
+            NavigationController.PopViewController(true);
         }
     }
 }
