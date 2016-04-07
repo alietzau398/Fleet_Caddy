@@ -46,6 +46,10 @@ namespace Fleet_Caddy
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField txtUsername { get; set; }
 
+		[Action ("BtnSubmitRegister_TouchUpInside:")]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		partial void BtnSubmitRegister_TouchUpInside (UIButton sender);
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (btnSubmitRegister != null) {

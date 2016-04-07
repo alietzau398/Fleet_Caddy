@@ -29,9 +29,7 @@
                                 <state key="normal" title="Log Off">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue id="700" destination="8" kind="modal" identifier="LogOffSeque"/>
-                                </connections>
+                                <connections/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="724" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="20" y="808" width="188" height="30"/>
@@ -49,6 +47,7 @@
                         <outlet property="btnLogOff" destination="123" id="name-outlet-123"/>
                         <outlet property="lblWelcome" destination="117" id="name-outlet-117"/>
                         <outlet property="btnFleetList" destination="724" id="name-outlet-724"/>
+                        <segue id="1306" destination="8" kind="modal" identifier="LogOffSeque"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -112,9 +111,7 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <connections>
-                                    <segue id="1128" destination="779" kind="modal" identifier="LogInSeque"/>
-                                </connections>
+                                <connections/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="44" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="245" y="332" width="278" height="30"/>
@@ -133,6 +130,7 @@
                         <outlet property="txtPassword" destination="35" id="name-outlet-35"/>
                         <outlet property="btnLogin" destination="43" id="name-outlet-43"/>
                         <outlet property="btnRegister" destination="44" id="name-outlet-44"/>
+                        <segue id="1209" destination="779" kind="push" identifier="LogInSeque"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,6 +196,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="BtnSubmitRegister_TouchUpInside:" destination="30" id="1310" eventType="touchUpInside"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
