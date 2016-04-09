@@ -14,8 +14,16 @@ namespace Fleet_Caddy
 	[Register ("CartListController")]
 	partial class CartListController
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIBarButtonItem btnAdd { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnAdd != null) {
+				btnAdd.Dispose ();
+				btnAdd = null;
+			}
 		}
 	}
 }

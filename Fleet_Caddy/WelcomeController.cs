@@ -21,6 +21,10 @@ namespace Fleet_Caddy
             
             var currentUser = ParseUser.CurrentUser;
             lblWelcome.Text = "Welcome, " + currentUser["fName"];
+            if (!(this.NavigationItem.HidesBackButton))
+            {
+                this.NavigationItem.SetHidesBackButton(true, false);
+            }
         }
 
         public override void ViewWillAppear(bool animated)

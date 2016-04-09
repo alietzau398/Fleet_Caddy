@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Fleet_Caddy</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>FleetCaddy</AssemblyName>
+    <AssemblyName>Fleet_Caddy</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,8 +22,6 @@
     <MtouchArch>i386</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignExtraArgs>
-    </CodesignExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -61,8 +59,6 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Adam Lietzau (2UCS4XPJPY)</CodesignKey>
     <CodesignProvision>1afa8cf4-1bba-43cc-9d87-1809b4576dc3</CodesignProvision>
-    <CodesignExtraArgs>
-    </CodesignExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -87,13 +83,10 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>1afa8cf4-1bba-43cc-9d87-1809b4576dc3</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Adam Lietzau (2UCS4XPJPY)</CodesignKey>
-    <CodesignExtraArgs>
-    </CodesignExtraArgs>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Cart.cs" />
     <Compile Include="CartDetailController.cs" />
     <Compile Include="CartDetailController.designer.cs">
       <DependentUpon>CartDetailController.cs</DependentUpon>
@@ -102,7 +95,6 @@
     <Compile Include="CartListController.designer.cs">
       <DependentUpon>CartListController.cs</DependentUpon>
     </Compile>
-    <Compile Include="CartTableSource.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>
@@ -128,9 +120,8 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Parse.iOS, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Marquette\2016a Spring\INTE 4995\Parse-1.7.0\Parse.iOS\Parse.iOS.dll</HintPath>
+    <Reference Include="Parse.iOS">
+      <HintPath>..\..\..\..\Downloads\Parse-1.7.0\Parse.iOS\Parse.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
