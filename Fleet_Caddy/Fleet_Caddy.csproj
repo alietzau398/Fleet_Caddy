@@ -103,6 +103,16 @@
       <DependentUpon>CartListController.cs</DependentUpon>
     </Compile>
     <Compile Include="CartTableSource.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeDetailController.cs" />
+    <Compile Include="EmployeeDetailController.designer.cs">
+      <DependentUpon>EmployeeDetailController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeListController.cs" />
+    <Compile Include="EmployeeListController.designer.cs">
+      <DependentUpon>EmployeeListController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeTableSource.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>
@@ -128,9 +138,8 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Parse.iOS, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Marquette\2016a Spring\INTE 4995\Parse-1.7.0\Parse.iOS\Parse.iOS.dll</HintPath>
+    <Reference Include="Parse.iOS">
+      <HintPath>..\..\..\..\..\..\Marquette\2016a Spring\INTE 4995\Parse-1.7.0\Parse.iOS\Parse.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
