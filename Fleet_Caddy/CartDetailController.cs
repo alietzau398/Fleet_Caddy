@@ -78,7 +78,12 @@ namespace Fleet_Caddy
 
             //populate the page with the selected task's information
             txtFleetNo.Text = currentCart.Fleet_No;
-            txtYear.Text = Convert.ToString(currentCart.Year);
+            if (IsNewTask) {  //this is a new cart
+                txtYear.Text = "";
+            } else //this is not a new cart
+            {
+                txtYear.Text = Convert.ToString(currentCart.Year);
+            }
         }
 
         //this will be called before the view is displayed

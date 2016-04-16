@@ -19,11 +19,20 @@ namespace Fleet_Caddy
             btnLogOff.TouchUpInside += BtnLogOff_TouchUpInside;
             btnFleetList.TouchUpInside += BtnFleetList_TouchUpInside;
             
-            var currentUser = ParseUser.CurrentUser;
-            lblWelcome.Text = "Welcome, " + currentUser["fName"];
             if (!(this.NavigationItem.HidesBackButton))
             {
                 this.NavigationItem.SetHidesBackButton(true, false);
+            }
+
+            if(ParseUser.CurrentUser == null) //the user is not logged in, navigate to the log in page.
+            {
+                NavigationController.PopViewController(true);
+                var home = Storyboard.InstantiateViewController("Home") as HomeController;
+                NavigationController.PushViewController(home, true);
+            } else //there is a user!!
+            {
+                var currentUser = ParseUser.CurrentUser;
+                lblWelcome.Text = "Welcome, " + currentUser["fName"];
             }
         }
 
@@ -35,6 +44,14 @@ namespace Fleet_Caddy
             if (!(this.NavigationItem.HidesBackButton))
             {
                 this.NavigationItem.SetHidesBackButton(true, false);
+
+                var currentUser = ParseUser.CurrentUser;
+                lblWelcome.Text = "Welcome, " + currentUser["fName"];
+            }
+            if (ParseUser.CurrentUser != null) //the user is not logged in, navigate to the log in page.
+            {
+                var currentUser = ParseUser.CurrentUser;
+                lblWelcome.Text = "Welcome, " + currentUser["fName"];
             }
 
         }
@@ -48,7 +65,9 @@ namespace Fleet_Caddy
         {
             ParseUser.LogOut();
             //PerformSegue("LogOffSeque", this);
-            NavigationController.PopViewController(true);
+            //NavigationController.PopViewController(true);
+            var home = Storyboard.InstantiateViewController("Home") as HomeController;
+            NavigationController.PushViewController(home, true);
         }
     }
 }

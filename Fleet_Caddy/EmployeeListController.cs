@@ -126,6 +126,7 @@ namespace Fleet_Caddy
                 //based on on the objectId of the selected employee, retreieve the object
                 ParseObject updatedEmployee = await query.GetAsync(oldEmployee.ObjectID);
 
+                updatedEmployee["User"] = ParseUser.CurrentUser;
                 updatedEmployee["First_Name"] = oldEmployee.First_Name;
                 updatedEmployee["Last_Name"] = oldEmployee.Last_Name;
                 updatedEmployee["Address"] = oldEmployee.Address;
@@ -143,14 +144,15 @@ namespace Fleet_Caddy
                 //add parse code for saving an employee
                 var addEmployee = new ParseObject("Employees");
                 //this is the name of your class/table name on parse
-                addEmployee["First_Name"] = oldEmployee.First_Name;
-                addEmployee["Last_Name"] = oldEmployee.Last_Name;
-                addEmployee["Address"] = oldEmployee.Address;
-                addEmployee["City"] = oldEmployee.City;
-                addEmployee["State"] = oldEmployee.State;
-                addEmployee["Zip"] = oldEmployee.Zip;
-                addEmployee["Email"] = oldEmployee.Email;
-                addEmployee["Employed"] = oldEmployee.Employed;
+                addEmployee["User"] = ParseUser.CurrentUser;
+                addEmployee["First_Name"] = newEmployee.First_Name;
+                addEmployee["Last_Name"] = newEmployee.Last_Name; //code breaks here
+                addEmployee["Address"] = newEmployee.Address;
+                addEmployee["City"] = newEmployee.City;
+                addEmployee["State"] = newEmployee.State;
+                addEmployee["Zip"] = newEmployee.Zip;
+                addEmployee["Email"] = newEmployee.Email;
+                addEmployee["Employed"] = newEmployee.Employed;
                 await addEmployee.SaveAsync(); //save the changes to parse
 
                 newEmployee.ObjectID = addEmployee.ObjectId;

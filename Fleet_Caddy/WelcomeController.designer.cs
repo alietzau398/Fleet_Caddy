@@ -24,7 +24,15 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnGasLog { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton btnLogOff { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnProfile { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -40,9 +48,17 @@ namespace Fleet_Caddy
 				btnFleetList.Dispose ();
 				btnFleetList = null;
 			}
+			if (btnGasLog != null) {
+				btnGasLog.Dispose ();
+				btnGasLog = null;
+			}
 			if (btnLogOff != null) {
 				btnLogOff.Dispose ();
 				btnLogOff = null;
+			}
+			if (btnProfile != null) {
+				btnProfile.Dispose ();
+				btnProfile = null;
 			}
 			if (lblWelcome != null) {
 				lblWelcome.Dispose ();

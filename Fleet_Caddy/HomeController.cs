@@ -24,7 +24,8 @@ namespace Fleet_Caddy
             //sets the form equal to nothing
             txtUsername.Text = "";
             txtPassword.Text = "";
-
+            
+            this.NavigationItem.SetHidesBackButton(true, false);
         }
 
         //In the near future when login works, this will point the user to the welcome page if they are already logged in 
@@ -32,12 +33,19 @@ namespace Fleet_Caddy
         {
             base.ViewDidLoad();
 
+            if (!(this.NavigationItem.HidesBackButton))
+            {
+                this.NavigationItem.SetHidesBackButton(true, false);
+            }
+
             btnLogin.TouchUpInside += BtnLogin_TouchUpInside;
             if (ParseUser.CurrentUser != null)
             {
+                //Oh no! the user got here but wasn't logged off! Send them to the welcome page!
+                NavigationController.PopViewController(true);
                 //PerformSegue("LogInSeque", this);
-                var welcome = Storyboard.InstantiateViewController("Welcome") as WelcomeController;
-                NavigationController.PushViewController(welcome, true);
+                //var welcome = Storyboard.InstantiateViewController("Welcome") as WelcomeController;
+                //NavigationController.PushViewController(welcome, true);
             }
         }
 
@@ -60,8 +68,12 @@ namespace Fleet_Caddy
                 {
                     //try to connect to parse
                     ParseUser myUser = await ParseUser.LogInAsync(usernamePU, passwordPU);
-                    var welcome = Storyboard.InstantiateViewController("Welcome") as WelcomeController;
-                    NavigationController.PushViewController(welcome, true);
+
+                    //pop, don't push 
+                    NavigationController.PopViewController(true);
+
+                    //var welcome = Storyboard.InstantiateViewController("Welcome") as WelcomeController;
+                    //NavigationController.PushViewController(welcome, true);
                 }
                 catch (ParseException f)
                 {
