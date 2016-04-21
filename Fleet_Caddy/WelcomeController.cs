@@ -33,6 +33,8 @@ namespace Fleet_Caddy
             {
                 var currentUser = ParseUser.CurrentUser;
                 lblWelcome.Text = "Welcome, " + currentUser["fName"];
+                //lblWelcome.Font = UIFont.FromName("Amperzand", 17f);
+                //WelcomeView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Background1024x1024-01.png"));
             }
         }
 

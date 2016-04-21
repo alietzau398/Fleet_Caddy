@@ -14,8 +14,40 @@ namespace Fleet_Caddy
 	[Register ("GasLogController")]
 	partial class GasLogController
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnAdd { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnShow1st { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnShow2nd { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITableView tblGasLog { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnAdd != null) {
+				btnAdd.Dispose ();
+				btnAdd = null;
+			}
+			if (btnShow1st != null) {
+				btnShow1st.Dispose ();
+				btnShow1st = null;
+			}
+			if (btnShow2nd != null) {
+				btnShow2nd.Dispose ();
+				btnShow2nd = null;
+			}
+			if (tblGasLog != null) {
+				tblGasLog.Dispose ();
+				tblGasLog = null;
+			}
 		}
 	}
 }

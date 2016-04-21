@@ -113,10 +113,16 @@
       <DependentUpon>EmployeeListController.cs</DependentUpon>
     </Compile>
     <Compile Include="EmployeeTableSource.cs" />
+    <Compile Include="GasLog.cs" />
     <Compile Include="GasLogController.cs" />
     <Compile Include="GasLogController.designer.cs">
       <DependentUpon>GasLogController.cs</DependentUpon>
     </Compile>
+    <Compile Include="GasLogDetailController.cs" />
+    <Compile Include="GasLogDetailController.designer.cs">
+      <DependentUpon>GasLogDetailController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GasLogTableSource.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="HomeController.designer.cs">
       <DependentUpon>HomeController.cs</DependentUpon>
@@ -136,8 +142,13 @@
       <DependentUpon>WelcomeController.cs</DependentUpon>
     </Compile>
     <None Include="GettingStarted.Xamarin" />
-    <None Include="Info.plist" />
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\Amperzand.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard">
@@ -146,9 +157,8 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Parse.iOS, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Marquette\2016a Spring\INTE 4995\Parse-1.7.0\Parse.iOS\Parse.iOS.dll</HintPath>
+    <Reference Include="Parse.iOS">
+      <HintPath>..\..\..\..\..\Marquette\2016a Spring\INTE 4995\Parse-1.7.0\Parse.iOS\Parse.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -157,6 +167,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
+    <BundleResource Include="Resources\Background.png" />
+    <BundleResource Include="Resources\Background1024x1024-01.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Contents.json">

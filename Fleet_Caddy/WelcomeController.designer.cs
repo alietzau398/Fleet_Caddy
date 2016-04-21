@@ -38,6 +38,10 @@ namespace Fleet_Caddy
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel lblWelcome { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView WelcomeView { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (btnEmployeeList != null) {
@@ -63,6 +67,10 @@ namespace Fleet_Caddy
 			if (lblWelcome != null) {
 				lblWelcome.Dispose ();
 				lblWelcome = null;
+			}
+			if (WelcomeView != null) {
+				WelcomeView.Dispose ();
+				WelcomeView = null;
 			}
 		}
 	}

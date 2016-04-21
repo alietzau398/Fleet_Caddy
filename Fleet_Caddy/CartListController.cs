@@ -22,7 +22,7 @@ namespace Fleet_Caddy
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
             //base.PrepareForSegue(segue, sender);
-            if (segue.Identifier == "")
+            if (segue.Identifier == "CartSegue")
             { //set in storyboard
                 var navctrl = segue.DestinationViewController as CartDetailController;
 
