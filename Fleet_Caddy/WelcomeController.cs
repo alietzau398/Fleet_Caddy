@@ -35,9 +35,16 @@ namespace Fleet_Caddy
                 lblWelcome.Text = "Welcome, " + currentUser["fName"];
                 //lblWelcome.Font = UIFont.FromName("Amperzand", 17f);
                 //WelcomeView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Background1024x1024-01.png"));
+                //DateTime dateNow = DateTime.Now.Date;
+                //lblDateNow.Text = dateNow.ToString("d");
+                //this code is for determining what day of the week it is
+                //lblDayWeek.Text = dateNow.DayOfWeek.ToString();
+                //Goes through goes to the day before until it finds the start of the week (sunday)
+                //lblBeginWeek.Text = StartOfWeek(dateNow, DayOfWeek.Sunday).ToString("d");
+                
             }
         }
-
+                
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
@@ -66,8 +73,6 @@ namespace Fleet_Caddy
         private void BtnLogOff_TouchUpInside(object sender, EventArgs e)
         {
             ParseUser.LogOut();
-            //PerformSegue("LogOffSeque", this);
-            //NavigationController.PopViewController(true);
             var home = Storyboard.InstantiateViewController("Home") as HomeController;
             NavigationController.PushViewController(home, true);
         }

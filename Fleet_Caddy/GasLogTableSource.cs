@@ -39,7 +39,7 @@ namespace Fleet_Caddy
             //if there are no cells to reuse, create a new one
             if (cell == null) cell = new UITableViewCell(UITableViewCellStyle.Default, cellIdentifier);
 
-            cell.TextLabel.Text = gasLogItems[indexPath.Row].ObjectID + " " + gasLogItems[indexPath.Row].Fueled;
+            cell.TextLabel.Text = "Cart: " + gasLogItems[indexPath.Row].CartNo + " " + gasLogItems[indexPath.Row].Fueled + " Gal.";
             cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
             return cell;

@@ -24,6 +24,14 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UISwitch chkActive { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITableViewCell s { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField txtBrand { get; set; }
 
 		[Outlet]
@@ -55,6 +63,14 @@ namespace Fleet_Caddy
 			if (btnCartSave != null) {
 				btnCartSave.Dispose ();
 				btnCartSave = null;
+			}
+			if (chkActive != null) {
+				chkActive.Dispose ();
+				chkActive = null;
+			}
+			if (s != null) {
+				s.Dispose ();
+				s = null;
 			}
 			if (txtBrand != null) {
 				txtBrand.Dispose ();

@@ -26,5 +26,6 @@ namespace Fleet_Caddy
         public string Model { get; set; }
         public ParseFile Photo { get; set; } //need a real var type
         public string Notes { get; set; }
+        public bool Active { get; set; }
     }
 }

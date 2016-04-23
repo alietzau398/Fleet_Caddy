@@ -30,6 +30,18 @@ namespace Fleet_Caddy
                 //apply trim() to cleanse the user entered data
                 currentCart.Fleet_No = txtFleetNo.Text.Trim();
                 currentCart.Year = Convert.ToInt32(txtYear.Text.Trim());
+                currentCart.Brand = txtBrand.Text.Trim();
+                currentCart.Model = txtModel.Text.Trim();
+                currentCart.Notes = txtNotes.Text.Trim();
+                currentCart.Serial_No = txtSerial_No.Text.Trim();
+                currentCart.Active = chkActive.On;
+                /*
+                txtFleetNo.Text = currentCart.Fleet_No;
+                txtBrand.Text = currentCart.Brand;
+                txtModel.Text = currentCart.Model;
+                txtNotes.Text = currentCart.Notes;
+                txtSerial_No.Text = currentCart.Serial_No; */
+
                 var tempYear = Convert.ToString(currentCart.Year);
 
                 //Go through and make sure required fields are filled in
@@ -78,6 +90,12 @@ namespace Fleet_Caddy
 
             //populate the page with the selected task's information
             txtFleetNo.Text = currentCart.Fleet_No;
+            txtBrand.Text = currentCart.Brand;
+            txtModel.Text = currentCart.Model;
+            txtNotes.Text = currentCart.Notes;
+            txtSerial_No.Text = currentCart.Serial_No;
+            chkActive.On = currentCart.Active;
+
             if (IsNewTask) {  //this is a new cart
                 txtYear.Text = "";
             } else //this is not a new cart

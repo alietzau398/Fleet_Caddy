@@ -96,6 +96,14 @@ namespace Fleet_Caddy
             cell.TextLabel.Text = tableCartItems[indexPath.Row].Fleet_No;
             //show an arrow icon next to the cell
             cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+            //set background color based on status of the cart.
+            if (tableCartItems[indexPath.Row].Active)
+            { //the cart is active, set to green
+                cell.BackgroundColor = UIColor.FromRGB(178, 255, 178);
+            } else
+            { //the cart is not active, set to red
+                cell.BackgroundColor = UIColor.FromRGB(255, 178, 178);
+            }
 
             return cell;
         }

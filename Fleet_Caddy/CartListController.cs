@@ -61,6 +61,7 @@ namespace Fleet_Caddy
                         ObjectID = myCart.ObjectId, //mycart is the variable for the items in the results
                         Year = myCart.Get<int>("Year"), //takes the year attribute from my cart and puts it in the object attribute of year
                         Fleet_No = myCart.Get<string>("Fleet_No"), //does the same for fleet_no
+                        Active = myCart.Get<bool>("Active"),
                     };
                     carts.Add(cartItem);
                 }
@@ -98,6 +99,7 @@ namespace Fleet_Caddy
                 updatedCart["Fleet_No"] = oldCart.Fleet_No;
                 updatedCart["Year"] = oldCart.Year;
                 updatedCart["User"] = ParseUser.CurrentUser;
+                updatedCart["Active"] = oldCart.Active;
 
                 await updatedCart.SaveAsync(); //save the changes to parse
             } else
@@ -111,6 +113,7 @@ namespace Fleet_Caddy
                 addCart["Fleet_No"] = newCart.Fleet_No;
                 addCart["Year"] = newCart.Year;
                 addCart["User"] = ParseUser.CurrentUser;
+                addCart["Active"] = newCart.Active;
 
                 await addCart.SaveAsync(); //save the changes to parse
 

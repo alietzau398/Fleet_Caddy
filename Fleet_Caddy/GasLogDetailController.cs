@@ -25,6 +25,7 @@ namespace Fleet_Caddy
 
             //hide the delete button if the calling page indicates that it is a new gaslog
             if (IsNewGasLog) btnGasLogDelete.Hidden = true;
+            
 
             //action to be taken when the save button is selected
             btnGasLogSave.TouchUpInside += (sender, e) =>
@@ -41,6 +42,10 @@ namespace Fleet_Caddy
                 { //all the things you want are there, so save the cart!
                   //delegate the task to be execute on the on the cartlistcontroller page
                     currentGasLog.Fueled = Convert.ToDouble(txtFueled.Text);
+                    DateTime dateNow = Convert.ToDateTime(txtWhen.Text);
+                    currentGasLog.BeginWeek = StartOfWeek(dateNow, DayOfWeek.Sunday);
+
+                    //currentGasLog.BeginWeek = 
                     Delegate.SaveGasLog(currentGasLog);
                 }
             };
@@ -73,8 +78,20 @@ namespace Fleet_Caddy
             };
         }
 
-        private void SetUpCartPicker()
+        public DateTime StartOfWeek(DateTime dt, DayOfWeek startOfWeek)
         {
+            int diff = dt.DayOfWeek - startOfWeek;
+            if (diff < 0)
+            {
+                diff += 7;
+            }
+            return dt.AddDays(-1 * diff).Date;
+        }
+
+        private void SetUpCartPicker()
+        { 
+            //setup the picker and the model
+            
 
         }
 
@@ -99,7 +116,7 @@ namespace Fleet_Caddy
             else //this is not a new cart
             {
                 txtFueled.Text = Convert.ToString(currentGasLog.Fueled);
-                txtWhen.Text = Convert.ToString(currentGasLog.When);
+                txtWhen.Text = currentGasLog.When.ToString("d");
             }
         }
 

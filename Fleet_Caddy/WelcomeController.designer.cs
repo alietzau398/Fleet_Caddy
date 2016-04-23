@@ -36,6 +36,18 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblBeginWeek { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblDateNow { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblDayWeek { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel lblWelcome { get; set; }
 
 		[Outlet]
@@ -63,6 +75,18 @@ namespace Fleet_Caddy
 			if (btnProfile != null) {
 				btnProfile.Dispose ();
 				btnProfile = null;
+			}
+			if (lblBeginWeek != null) {
+				lblBeginWeek.Dispose ();
+				lblBeginWeek = null;
+			}
+			if (lblDateNow != null) {
+				lblDateNow.Dispose ();
+				lblDateNow = null;
+			}
+			if (lblDayWeek != null) {
+				lblDayWeek.Dispose ();
+				lblDayWeek = null;
 			}
 			if (lblWelcome != null) {
 				lblWelcome.Dispose ();

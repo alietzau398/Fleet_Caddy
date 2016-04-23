@@ -76,6 +76,7 @@ namespace Fleet_Caddy
                         Id = gasLogs.Count + 1,
                         Fueled = myGasLog.Get<double>("Fueled"),
                         When = myGasLog.Get<DateTime>("Date"),
+                        CartNo = myGasLog.Get<int>("CartNo"),
                     };
 
                     gasLogs.Add(gasLogItem);
@@ -113,8 +114,10 @@ namespace Fleet_Caddy
 
                 updatedGasLog["Users"] = oldGasLog.User;
                 updatedGasLog["Cart"] = oldGasLog.Cart;
+                updatedGasLog["CartNo"] = oldGasLog.CartNo;
                 updatedGasLog["Employee"] = oldGasLog.Employee;
                 updatedGasLog["Fueled"] = oldGasLog.Fueled;
+                updatedGasLog["BeginWeek"] = oldGasLog.BeginWeek;
                 updatedGasLog["Date"] = oldGasLog.When;
 
                 await updatedGasLog.SaveAsync();
@@ -128,8 +131,10 @@ namespace Fleet_Caddy
                 //this is the name of your class/table name on parse
                 addGasLog["User"] = ParseUser.CurrentUser;
                 addGasLog["Cart"] = newGasLog.Cart;
+                addGasLog["CartNo"] = newGasLog.CartNo;
                 addGasLog["Employee"] = newGasLog.Employee;
                 addGasLog["Fueled"] = newGasLog.Fueled;
+                addGasLog["BeginWeek"] = newGasLog.BeginWeek;
                 addGasLog["Date"] = newGasLog.When;
 
                 await addGasLog.SaveAsync();
