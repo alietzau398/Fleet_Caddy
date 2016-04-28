@@ -15,7 +15,7 @@ namespace Fleet_Caddy
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+            
             btnLogOff.TouchUpInside += BtnLogOff_TouchUpInside;
             btnFleetList.TouchUpInside += BtnFleetList_TouchUpInside;
             

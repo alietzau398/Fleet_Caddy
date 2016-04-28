@@ -40,12 +40,12 @@ namespace Fleet_Caddy
             lblEmail.Text = "Email: " + currentUser["email"];
             lblFName.Text = "First Name: " + currentUser["fName"];
             lblLName.Text = "Last Name: " + currentUser["lName"];
-            lblBusinessName.Text = "Business Name: " + currentUser["businessName"];
+            lblBusinessName.Text = "Business Name: " + currentUser["businessName"].ToString();
             //load Values into text fields
             txtEmail.Text = currentUser["email"] + "";
             txtFName.Text = currentUser["fName"] + "";
             txtLName.Text = currentUser["lName"] + "";
-            txtBusinessName.Text = currentUser["businessName"] + "";
+            txtBusinessName.Text = currentUser["businessName"].ToString();
             
         }
 
@@ -66,7 +66,7 @@ namespace Fleet_Caddy
                 lblEmail.Text = "Email: " + currentUser["email"];
                 lblFName.Text = "First Name: " + currentUser["fName"];
                 lblLName.Text = "Last Name: " + currentUser["lName"];
-                lblBusinessName.Text = "Business Name: " + currentUser["businessName"];
+                lblBusinessName.Text = "Business Name: " + currentUser["businessName"].ToString();
                 lblProfileWelcome.Text = currentUser["fName"] + "'s profile";
             } catch (Exception error)
             {

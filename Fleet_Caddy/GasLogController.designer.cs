@@ -28,6 +28,22 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnShowAll { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblGalBegin { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblGalBeginBefore { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel lblTest { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITableView tblGasLog { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -43,6 +59,22 @@ namespace Fleet_Caddy
 			if (btnShow2nd != null) {
 				btnShow2nd.Dispose ();
 				btnShow2nd = null;
+			}
+			if (btnShowAll != null) {
+				btnShowAll.Dispose ();
+				btnShowAll = null;
+			}
+			if (lblGalBegin != null) {
+				lblGalBegin.Dispose ();
+				lblGalBegin = null;
+			}
+			if (lblGalBeginBefore != null) {
+				lblGalBeginBefore.Dispose ();
+				lblGalBeginBefore = null;
+			}
+			if (lblTest != null) {
+				lblTest.Dispose ();
+				lblTest = null;
 			}
 			if (tblGasLog != null) {
 				tblGasLog.Dispose ();

@@ -20,6 +20,7 @@ namespace Fleet_Caddy
         public int CartNo { get; set; }
         public ParseUser User { get; set; }
         public ParseObject Employee { get; set; }
+        public string EmployeeName { get; set; }
         public double Fueled { get; set; }
         public DateTime When { get; set; }
         public DateTime BeginWeek { get; set; }

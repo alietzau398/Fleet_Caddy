@@ -38,6 +38,7 @@ namespace Fleet_Caddy
                     currentEmployee.State = txtState.Text.Trim();
                     currentEmployee.Zip = txtZip.Text.Trim();
                     currentEmployee.Employed = chkEmployed.On;
+                    currentEmployee.Email = txtEmail.Text.Trim();
 
                     //these are the fields that are required to be entered
                     if ((string.IsNullOrEmpty(currentEmployee.First_Name)) || (string.IsNullOrEmpty(currentEmployee.Last_Name)))

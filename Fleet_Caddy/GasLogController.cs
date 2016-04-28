@@ -5,6 +5,7 @@ using UIKit;
 using Parse;
 using System.Drawing;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Fleet_Caddy
 {
@@ -12,9 +13,7 @@ namespace Fleet_Caddy
 	{
         List<GasLog> gasLogs;
 
-        UITableView table;
-
-		public GasLogController (IntPtr handle) : base (handle)
+        public GasLogController (IntPtr handle) : base (handle)
 		{
             //Title="Gas Log";
         }
@@ -36,20 +35,43 @@ namespace Fleet_Caddy
             }
         }
 
+        public DateTime StartOfWeek(DateTime dt, DayOfWeek startOfWeek)
+        {
+            int diff = dt.DayOfWeek - startOfWeek;
+            if (diff < 0)
+            {
+                diff += 7;
+            }
+            return dt.AddDays(-1 * diff).Date;
+        }
+
         public async System.Threading.Tasks.Task GetAllGasLog(int type)
         {
             //initialize the list of GasLogs
             gasLogs = new List<GasLog> { };
 
+            //find the begining day of the week and the week before that
+            DateTime beginWeek = StartOfWeek(DateTime.Now, DayOfWeek.Sunday);
+            DateTime beginWeekBefore = beginWeek.AddDays(-7);
+
             var queryEnd = from gasLogList in ParseObject.GetQuery("Gas_Log")
+                           where gasLogList["User"] == ParseUser.CurrentUser
                            orderby gasLogList["updatedAt"] descending
                            select gasLogList; ;
             var query1 = from gasLogList in ParseObject.GetQuery("Gas_Log")
-                            orderby gasLogList["updatedAt"] descending
+                         where gasLogList["User"] == ParseUser.CurrentUser
+                         orderby gasLogList["updatedAt"] descending
                             select gasLogList;
             var query2 = from gasLogList in ParseObject.GetQuery("Gas_Log")
-                          orderby gasLogList["updatedAt"] descending
+                         where gasLogList["User"] == ParseUser.CurrentUser
+                         where gasLogList.Get<DateTime>("BeginWeek") == beginWeek
+                         orderby gasLogList["updatedAt"] descending
                           select gasLogList;
+            var query3 = from gasLogList in ParseObject.GetQuery("Gas_Log")
+                         where gasLogList["User"] == ParseUser.CurrentUser
+                         where gasLogList.Get<DateTime>("BeginWeek") == beginWeekBefore
+                         orderby gasLogList["updatedAt"] descending
+                         select gasLogList;
             //get a list of GasLogs from parse and sort by updatedAt date
             switch (type)
             {
@@ -58,6 +80,9 @@ namespace Fleet_Caddy
                     break;
                 case 2:
                     queryEnd = query2;
+                    break;
+                case 3:
+                    queryEnd = query3;
                     break;
             }
             
@@ -74,11 +99,14 @@ namespace Fleet_Caddy
                     {
                         ObjectID = myGasLog.ObjectId,
                         Id = gasLogs.Count + 1,
+                        Cart = myGasLog.Get<ParseObject>("Cart"),
                         Fueled = myGasLog.Get<double>("Fueled"),
+                        Employee = myGasLog.Get<ParseObject>("Employee"),
+                        EmployeeName = myGasLog.Get<string>("EmployeeName"),
                         When = myGasLog.Get<DateTime>("Date"),
+                        BeginWeek = myGasLog.Get<DateTime>("BeginWeek"),
                         CartNo = myGasLog.Get<int>("CartNo"),
                     };
-
                     gasLogs.Add(gasLogItem);
                 }
             }
@@ -86,8 +114,15 @@ namespace Fleet_Caddy
 
         public void CreateGasLog()
         {
+            int newId;
             //first add the gasLog to the underlying data
-            var newId = gasLogs[gasLogs.Count - 1].Id + 1;
+            if (gasLogs.Count == 0)
+            {
+                newId = 1;
+            } else
+            {
+                newId = gasLogs[gasLogs.Count - 1].Id + 1;
+            }
             var newGasLog = new GasLog() { Id = newId };
 
             //then open the detail view to edit it
@@ -116,6 +151,7 @@ namespace Fleet_Caddy
                 updatedGasLog["Cart"] = oldGasLog.Cart;
                 updatedGasLog["CartNo"] = oldGasLog.CartNo;
                 updatedGasLog["Employee"] = oldGasLog.Employee;
+                updatedGasLog["EmployeeName"] = oldGasLog.EmployeeName;
                 updatedGasLog["Fueled"] = oldGasLog.Fueled;
                 updatedGasLog["BeginWeek"] = oldGasLog.BeginWeek;
                 updatedGasLog["Date"] = oldGasLog.When;
@@ -133,6 +169,7 @@ namespace Fleet_Caddy
                 addGasLog["Cart"] = newGasLog.Cart;
                 addGasLog["CartNo"] = newGasLog.CartNo;
                 addGasLog["Employee"] = newGasLog.Employee;
+                addGasLog["EmployeeName"] = newGasLog.EmployeeName;
                 addGasLog["Fueled"] = newGasLog.Fueled;
                 addGasLog["BeginWeek"] = newGasLog.BeginWeek;
                 addGasLog["Date"] = newGasLog.When;
@@ -183,8 +220,16 @@ namespace Fleet_Caddy
 
             //populate the list from parse
             //call a method to get parse data 
-
-            await GetAllGasLog(1);
+            try
+            {
+                await GetAllGasLog(1);
+            } catch (Exception ex)
+            {
+                //display error message
+                var error = ex.Message;
+                var alert = new UIAlertView("Load Failed", "Sorry, we might be experiencing some connectivity difficulties. Please make sure you are connected to the internet." + error, null, "OK");
+                alert.Show();
+            }
 
             //before the page appears, go bind the table view to our data source
             //bind everytime
@@ -195,6 +240,82 @@ namespace Fleet_Caddy
             //perform any additional setup after loading the view 
             //this fires when the top bar items' add is clicked on 
             btnAdd.TouchUpInside += BtnAdd_TouchUpInside;
+            btnShow1st.TouchUpInside += BtnShow1st_TouchUpInside;
+            btnShow2nd.TouchUpInside += BtnShow2nd_TouchUpInside;
+            btnShowAll.TouchUpInside += BtnShowAll_TouchUpInside;
+
+            //lblTest.Text = beginWeek.ToString("d") + " " + beginWeekBefore.ToString("d");
+            GasLogGroupBy();
+        }
+
+        async public void BtnShowAll_TouchUpInside(object sender, EventArgs e)
+        {
+            try
+            {
+                await GetAllGasLog(1);
+                tblGasLog.Source = new GasLogTableSource(gasLogs, this);
+                Add(tblGasLog);
+                tblGasLog.ReloadData();
+            } catch (Exception ex)
+            {
+                //display error message
+                var error = ex.Message;
+                var alert = new UIAlertView("Load Failed", "Sorry, we might be experiencing some connectivity difficulties. Please make sure you are connected to the internet." + error, null, "OK");
+                alert.Show();
+            }
+        }
+
+        async public void BtnShow2nd_TouchUpInside(object sender, EventArgs e)
+        {
+            try
+            {
+                await GetAllGasLog(3);
+                tblGasLog.Source = new GasLogTableSource(gasLogs, this);
+                Add(tblGasLog);
+                tblGasLog.ReloadData();
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                var error = ex.Message;
+                var alert = new UIAlertView("Load Failed", "Sorry, we might be experiencing some connectivity difficulties. Please make sure you are connected to the internet." + error, null, "OK");
+                alert.Show();
+            }
+        }
+
+        async public void BtnShow1st_TouchUpInside(object sender, EventArgs e)
+        {
+            try
+            {
+                await GetAllGasLog(2);
+                tblGasLog.Source = new GasLogTableSource(gasLogs, this);
+                Add(tblGasLog);
+                tblGasLog.ReloadData();
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                var error = ex.Message;
+                var alert = new UIAlertView("Load Failed", "Sorry, we might be experiencing some connectivity difficulties. Please make sure you are connected to the internet." + error, null, "OK");
+                alert.Show();
+            }
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            GasLogGroupBy();
+        }
+
+        public void GasLogGroupBy()
+        {
+            DateTime beginWeek = StartOfWeek(DateTime.Now, DayOfWeek.Sunday);
+            DateTime beginWeekBefore = beginWeek.AddDays(-7);
+            double total = gasLogs.FindAll(t => t.BeginWeek == beginWeek).Sum(item => item.Fueled);
+            double totalBefore = gasLogs.FindAll(t => t.BeginWeek == beginWeekBefore).Sum(item => item.Fueled);
+            lblGalBegin.Text = total.ToString() + " Gal.";
+            lblGalBeginBefore.Text = totalBefore.ToString() + " Gal.";
         }
 
         private void BtnAdd_TouchUpInside(object sender, EventArgs e)
