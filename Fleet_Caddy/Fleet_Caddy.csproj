@@ -150,12 +150,19 @@
     <BundleResource Include="Resources\Amperzand.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\Gas Log.png" />
+    <BundleResource Include="Resources\Manage Carts-01.png" />
+    <BundleResource Include="Resources\Manage Employees-01.png" />
+    <BundleResource Include="Resources\Manual.png" />
+    <BundleResource Include="Resources\Profile-01.png" />
+    <BundleResource Include="Resources\Repairs.png" />
+    <BundleResource Include="Resources\Vendor-01.png" />
   </ItemGroup>
   <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
-    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Parse.iOS, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -166,10 +173,12 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Parse.iOS">
+      <HintPath>..\..\..\..\Downloads\Parse-1.7.0\Parse.iOS\Parse.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
-    <BundleResource Include="Resources\Background.png" />
     <BundleResource Include="Resources\Background1024x1024-01.png" />
   </ItemGroup>
   <ItemGroup>

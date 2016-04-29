@@ -24,8 +24,19 @@ namespace Fleet_Caddy
 
             lblProfileWelcome.Text = currentUser["fName"] + "'s profile";
 
-            btnEdit.TouchUpInside += BtnEdit_TouchUpInside;
-            btnSave.TouchUpInside += BtnSave_TouchUpInside;
+			btnEdit.TouchUpInside += BtnEdit_TouchUpInside;
+			btnEdit.SetTitleColor(UIColor.White, UIControlState.Normal);
+			btnEdit.BackgroundColor = UIColor.FromRGB(93, 203, 235);
+			btnEdit.Layer.BorderColor = UIColor.White.CGColor;
+			btnEdit.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
+
+			btnSave.TouchUpInside += BtnSave_TouchUpInside;
+			btnSave.SetTitleColor(UIColor.White, UIControlState.Normal);
+			btnSave.BackgroundColor = UIColor.FromRGB(93, 203, 235);
+			btnSave.Layer.BorderColor = UIColor.White.CGColor;
+			btnSave.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
 
             //Make Save button hidden
             btnSave.Hidden = true;
@@ -34,15 +45,11 @@ namespace Fleet_Caddy
             txtFName.Hidden = true;
             txtLName.Hidden = true;
             txtBusinessName.Hidden = true;
-            lblEmail2.Hidden = true;
-            lblFName2.Hidden = true;
-            lblLName2.Hidden = true;
-            lblBusinessName2.Hidden = true;
             //Load values into labels
-            lblEmail.Text = "Email: " + currentUser["email"];
-            lblFName.Text = "First Name: " + currentUser["fName"];
-            lblLName.Text = "Last Name: " + currentUser["lName"];
-            lblBusinessName.Text = "Business Name: " + currentUser["businessName"].ToString();
+			lblEmail.Text = currentUser["email"].ToString();
+			lblFName.Text = currentUser["fName"].ToString();
+			lblLName.Text = currentUser["lName"].ToString();
+            lblBusinessName.Text = currentUser["businessName"].ToString();
             //load Values into text fields
             txtEmail.Text = currentUser["email"] + "";
             txtFName.Text = currentUser["fName"] + "";
@@ -63,27 +70,23 @@ namespace Fleet_Caddy
                 currentUser["fName"] = txtFName.Text;
                 currentUser["lName"] = txtLName.Text;
                 currentUser["businessName"] = txtBusinessName.Text;
-                await currentUser.SaveAsync();
                 //Reset values of labels
-                lblEmail.Text = "Email: " + currentUser["email"];
-                lblFName.Text = "First Name: " + currentUser["fName"];
-                lblLName.Text = "Last Name: " + currentUser["lName"];
-                lblBusinessName.Text = "Business Name: " + currentUser["businessName"].ToString();
-                lblProfileWelcome.Text = currentUser["fName"] + "'s profile";
+				lblEmail.Text = txtEmail.Text;
+				lblFName.Text = txtFName.Text;
+				lblLName.Text = txtLName.Text;
+				lblBusinessName.Text = txtBusinessName.Text;
+				lblProfileWelcome.Text = txtFName.Text.Trim() + "'s profile";
+				await currentUser.SaveAsync();
             } catch (Exception error)
             {
                 string errorM = error.Message;
-                lblProfileWelcome.Text = errorM;
+                //lblProfileWelcome.Text = errorM;
             }
             //on success, hide text fields
             txtEmail.Hidden = true;
             txtFName.Hidden = true;
             txtLName.Hidden = true;
             txtBusinessName.Hidden = true;
-            lblEmail2.Hidden = true;
-            lblFName2.Hidden = true;
-            lblLName2.Hidden = true;
-            lblBusinessName2.Hidden = true;
             //Go through and make labels visible
             lblEmail.Hidden = false;
             lblFName.Hidden = false;
@@ -109,10 +112,6 @@ namespace Fleet_Caddy
             txtFName.Hidden = false;
             txtLName.Hidden = false;
             txtBusinessName.Hidden = false;
-            lblEmail2.Hidden = false;
-            lblFName2.Hidden = false;
-            lblLName2.Hidden = false;
-            lblBusinessName2.Hidden = false;
         }
     }
 }

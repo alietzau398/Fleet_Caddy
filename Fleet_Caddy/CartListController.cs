@@ -62,6 +62,11 @@ namespace Fleet_Caddy
                         Year = myCart.Get<int>("Year"), //takes the year attribute from my cart and puts it in the object attribute of year
                         Fleet_No = myCart.Get<string>("Fleet_No"), //does the same for fleet_no
                         Active = myCart.Get<bool>("Active"),
+                        Barcode_String = myCart.Get<string>("Barcode_String"),
+                        Serial_No = myCart.Get<string>("Serial_No"),
+                        Brand = myCart.Get<string>("Brand"),
+                        Model = myCart.Get<string>("Model"),
+                        Notes = myCart.Get<string>("Notes"),
                     };
                     carts.Add(cartItem);
                 }
@@ -100,6 +105,11 @@ namespace Fleet_Caddy
                 updatedCart["Year"] = oldCart.Year;
                 updatedCart["User"] = ParseUser.CurrentUser;
                 updatedCart["Active"] = oldCart.Active;
+                updatedCart["Barcode_String"] = oldCart.Barcode_String;
+                updatedCart["Serial_No"] = oldCart.Serial_No;
+                updatedCart["Brand"] = oldCart.Brand;
+                updatedCart["Model"] = oldCart.Model;
+                updatedCart["Notes"] = oldCart.Notes;
 
                 await updatedCart.SaveAsync(); //save the changes to parse
             } else
@@ -114,6 +124,11 @@ namespace Fleet_Caddy
                 addCart["Year"] = newCart.Year;
                 addCart["User"] = ParseUser.CurrentUser;
                 addCart["Active"] = newCart.Active;
+                addCart["Barcode_String"] = newCart.Barcode_String;
+                addCart["Serial_No"] = newCart.Serial_No;
+                addCart["Brand"] = newCart.Brand;
+                addCart["Model"] = newCart.Model;
+                addCart["Notes"] = newCart.Notes;
 
                 await addCart.SaveAsync(); //save the changes to parse
 

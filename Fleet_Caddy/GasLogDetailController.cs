@@ -133,7 +133,7 @@ namespace Fleet_Caddy
 
         public Cart selectedCart;
         public string selectedCartNo;
-        public int selectedCartIDIndex;
+        public int selectedCartIDIndex = 0;
         ParseObject selectCartParse;
 
         async private System.Threading.Tasks.Task SetCartNo()
@@ -170,9 +170,15 @@ namespace Fleet_Caddy
             UIBarButtonItem btnDone = new UIBarButtonItem("Done",
                 UIBarButtonItemStyle.Done, async (s, e) =>
                 {
-                    this.txtCart.Text = selectedCartNo;
-                    this.txtCart.ResignFirstResponder();
-                    await SetCartNo();
+					if (selectedCartNo == null) {
+						this.txtCart.Text = CartNoDict[0];
+						this.txtCart.ResignFirstResponder();
+						await SetCartNo();
+					} else {
+						this.txtCart.Text = selectedCartNo;
+						this.txtCart.ResignFirstResponder();
+						await SetCartNo();
+					}
                 });
             //connects the button to the toolbar
             toolbar.SetItems(new UIBarButtonItem[] { btnDone }, true);
@@ -242,7 +248,7 @@ namespace Fleet_Caddy
 
         public Employee selectedEmployee;
         public string selectedEmployeeName;
-        public int selectedEmployeeIndex;
+        public int selectedEmployeeIndex = 0;
         ParseObject selectEmployeeParse;
 
         async public System.Threading.Tasks.Task SetEmployee()
@@ -279,9 +285,15 @@ namespace Fleet_Caddy
             UIBarButtonItem btnDoneEmp = new UIBarButtonItem("Done",
                 UIBarButtonItemStyle.Done, async (s, e) =>
                 {
-                    this.txtEmployee.Text = selectedEmployeeName;
-                    this.txtEmployee.ResignFirstResponder();
-                    await SetEmployee();
+					if (selectedCartNo == null) {
+						this.txtEmployee.Text = CartNoDict[0];
+						this.txtEmployee.ResignFirstResponder();
+						await SetEmployee();
+					} else {
+						this.txtEmployee.Text = selectedEmployeeName;
+						this.txtEmployee.ResignFirstResponder();
+						await SetEmployee();
+					}
                 });
             //connects the button to the toolbar
             toolbarEmp.SetItems(new UIBarButtonItem[] { btnDoneEmp }, true);

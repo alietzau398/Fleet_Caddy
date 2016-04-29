@@ -242,9 +242,28 @@ namespace Fleet_Caddy
             //perform any additional setup after loading the view 
             //this fires when the top bar items' add is clicked on 
             btnAdd.TouchUpInside += BtnAdd_TouchUpInside;
-            btnShow1st.TouchUpInside += BtnShow1st_TouchUpInside;
+			btnAdd.SetTitleColor(UIColor.White, UIControlState.Normal);
+			btnAdd.BackgroundColor = UIColor.FromRGB(93, 203, 235);
+			btnAdd.Layer.BorderColor = UIColor.White.CGColor;
+			btnAdd.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
+			btnShow1st.TouchUpInside += BtnShow1st_TouchUpInside;
+			btnShow1st.SetTitleColor(UIColor.White, UIControlState.Normal);
+			btnShow1st.BackgroundColor = UIColor.FromRGB(93, 203, 235);
+			btnShow1st.Layer.BorderColor = UIColor.White.CGColor;
+			btnShow1st.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
             btnShow2nd.TouchUpInside += BtnShow2nd_TouchUpInside;
-            btnShowAll.TouchUpInside += BtnShowAll_TouchUpInside;
+			btnShow2nd.SetTitleColor(UIColor.White, UIControlState.Normal);
+			btnShow2nd.BackgroundColor = UIColor.FromRGB(93, 203, 235);
+			btnShow2nd.Layer.BorderColor = UIColor.White.CGColor;
+			btnShow2nd.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
+			btnShowAll.TouchUpInside += BtnShowAll_TouchUpInside;
+			btnShowAll.SetTitleColor(UIColor.White, UIControlState.Normal);
+			btnShowAll.BackgroundColor = UIColor.FromRGB(93, 203, 235);
+			btnShowAll.Layer.BorderColor = UIColor.White.CGColor;
+			btnShowAll.Layer.BorderWidth = System.nfloat.Parse("2.0");
 
             //lblTest.Text = beginWeek.ToString("d") + " " + beginWeekBefore.ToString("d");
             GasLogGroupBy();
