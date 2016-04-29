@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>Fleet_Caddy</string>
+	<string>Fleet Caddy</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.LietzauBros.GolfERP</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -33,13 +33,13 @@
 	<string>0.4</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>Main</string>
-	<key>CFBundleVersion</key>
-	<string>13</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Media.xcassets/AppIcons.appiconset</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Amperzand.tff</string>
+		<string>Amperzand.tiff</string>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>15</string>
 </dict>
 </plist>

@@ -20,6 +20,8 @@ namespace Fleet_Caddy
         {
             base.ViewDidLoad();
 
+            ProfileView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Background1024x1024-01.png"));
+
             lblProfileWelcome.Text = currentUser["fName"] + "'s profile";
 
             btnEdit.TouchUpInside += BtnEdit_TouchUpInside;

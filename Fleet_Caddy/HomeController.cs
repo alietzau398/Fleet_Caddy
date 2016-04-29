@@ -33,6 +33,19 @@ namespace Fleet_Caddy
         {
             base.ViewDidLoad();
 
+            //Set up page
+            HomeView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Background1024x1024-01.png"));
+            
+            btnLogin.SetTitleColor(UIColor.White, UIControlState.Normal);
+            btnLogin.BackgroundColor = UIColor.FromRGB(95, 202, 234);
+            btnLogin.Layer.BorderColor = UIColor.White.CGColor;
+            btnLogin.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
+            btnRegister.SetTitleColor(UIColor.White, UIControlState.Normal);
+            btnRegister.BackgroundColor = UIColor.FromRGB(95, 202, 234);
+            btnRegister.Layer.BorderColor = UIColor.White.CGColor;
+            btnRegister.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
             if (!(this.NavigationItem.HidesBackButton))
             {
                 this.NavigationItem.SetHidesBackButton(true, false);
@@ -43,9 +56,6 @@ namespace Fleet_Caddy
             {
                 //Oh no! the user got here but wasn't logged off! Send them to the welcome page!
                 NavigationController.PopViewController(true);
-                //PerformSegue("LogInSeque", this);
-                //var welcome = Storyboard.InstantiateViewController("Welcome") as WelcomeController;
-                //NavigationController.PushViewController(welcome, true);
             }
         }
 

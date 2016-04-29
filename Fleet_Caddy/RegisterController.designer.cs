@@ -20,6 +20,10 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView RegisterView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField txtBusinessName { get; set; }
 
 		[Outlet]
@@ -55,6 +59,10 @@ namespace Fleet_Caddy
 			if (btnSubmitRegister != null) {
 				btnSubmitRegister.Dispose ();
 				btnSubmitRegister = null;
+			}
+			if (RegisterView != null) {
+				RegisterView.Dispose ();
+				RegisterView = null;
 			}
 			if (txtBusinessName != null) {
 				txtBusinessName.Dispose ();

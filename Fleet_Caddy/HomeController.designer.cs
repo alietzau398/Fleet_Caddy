@@ -24,6 +24,10 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView HomeView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField txtPassword { get; set; }
 
 		[Outlet]
@@ -39,6 +43,10 @@ namespace Fleet_Caddy
 			if (btnRegister != null) {
 				btnRegister.Dispose ();
 				btnRegister = null;
+			}
+			if (HomeView != null) {
+				HomeView.Dispose ();
+				HomeView = null;
 			}
 			if (txtPassword != null) {
 				txtPassword.Dispose ();

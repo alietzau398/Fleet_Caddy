@@ -32,19 +32,19 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton btnManual { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton btnProfile { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblBeginWeek { get; set; }
+		UIButton btnRepairLog { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblDateNow { get; set; }
-
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel lblDayWeek { get; set; }
+		UIButton btnVendor { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -72,21 +72,21 @@ namespace Fleet_Caddy
 				btnLogOff.Dispose ();
 				btnLogOff = null;
 			}
+			if (btnManual != null) {
+				btnManual.Dispose ();
+				btnManual = null;
+			}
 			if (btnProfile != null) {
 				btnProfile.Dispose ();
 				btnProfile = null;
 			}
-			if (lblBeginWeek != null) {
-				lblBeginWeek.Dispose ();
-				lblBeginWeek = null;
+			if (btnRepairLog != null) {
+				btnRepairLog.Dispose ();
+				btnRepairLog = null;
 			}
-			if (lblDateNow != null) {
-				lblDateNow.Dispose ();
-				lblDateNow = null;
-			}
-			if (lblDayWeek != null) {
-				lblDayWeek.Dispose ();
-				lblDayWeek = null;
+			if (btnVendor != null) {
+				btnVendor.Dispose ();
+				btnVendor = null;
 			}
 			if (lblWelcome != null) {
 				lblWelcome.Dispose ();

@@ -60,6 +60,10 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView ProfileView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField txtBusinessName { get; set; }
 
 		[Outlet]
@@ -119,6 +123,10 @@ namespace Fleet_Caddy
 			if (lblProfileWelcome != null) {
 				lblProfileWelcome.Dispose ();
 				lblProfileWelcome = null;
+			}
+			if (ProfileView != null) {
+				ProfileView.Dispose ();
+				ProfileView = null;
 			}
 			if (txtBusinessName != null) {
 				txtBusinessName.Dispose ();

@@ -216,6 +216,8 @@ namespace Fleet_Caddy
         {
             base.ViewDidLoad();
 
+            GasLogView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Background1024x1024-01.png"));
+
             //tblGasLog = new UITableView(View.Bounds); //defaults to plan style
 
             //populate the list from parse

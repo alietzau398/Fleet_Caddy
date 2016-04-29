@@ -32,6 +32,10 @@ namespace Fleet_Caddy
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UIView GasLogView { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel lblGalBegin { get; set; }
 
 		[Outlet]
@@ -63,6 +67,10 @@ namespace Fleet_Caddy
 			if (btnShowAll != null) {
 				btnShowAll.Dispose ();
 				btnShowAll = null;
+			}
+			if (GasLogView != null) {
+				GasLogView.Dispose ();
+				GasLogView = null;
 			}
 			if (lblGalBegin != null) {
 				lblGalBegin.Dispose ();

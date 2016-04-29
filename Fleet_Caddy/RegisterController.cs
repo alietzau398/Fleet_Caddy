@@ -10,12 +10,20 @@ namespace Fleet_Caddy
 	{
 		public RegisterController (IntPtr handle) : base (handle)
 		{
-		}
+            Title = "Registration";
+        }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            
+
+            RegisterView.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("Background1024x1024-01.png"));
+
+            btnSubmitRegister.SetTitleColor(UIColor.White, UIControlState.Normal);
+            btnSubmitRegister.BackgroundColor = UIColor.FromRGB(95, 202, 234);
+            btnSubmitRegister.Layer.BorderColor = UIColor.White.CGColor;
+            btnSubmitRegister.Layer.BorderWidth = System.nfloat.Parse("2.0");
+
         }
 
         async partial void BtnSubmitRegister_TouchUpInside(UIButton sender)
